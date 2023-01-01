@@ -15,19 +15,19 @@ void print_similar_words(char * str);
 
 int main(){
 
-    char Search[LINE], Function[LINE], funcToUse;
+    char Search[LINE], Function[LINE], funcToUse = ' ';
     char *str = Search;
 
     int start;
 
     start = getword(Search);
     if(start==0){
-        printf("no search term exiting program");
+        printf("no search term exiting program\n");
         exit(0);
     }
     start = getword(Function);
     if(start==0){
-        printf("no function exiting program");
+        printf("no function exiting program\n");
         exit(0);
     }
     
