@@ -10,7 +10,7 @@ int main(){
     int *arr = array; // arr is a pointer to array's first index
 
     int i;
-    printf("Please type in %d integers to be inserted in to the array\n",N);
+    //printf("Please type in %d integers to be inserted in to the array\n",N);
     for(i = 0; i<N;i++){
         scanf("%d",&(*(arr +i)));//scanning input into the array
     }
