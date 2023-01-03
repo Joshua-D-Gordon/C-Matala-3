@@ -22,7 +22,7 @@ int main(){
         printf("%d,",*(arr + i));
     }
     //printing last element
-    printf("%d",*(arr+N-1));
+    printf("%d\n",*(arr+N-1));
 
     return 0;
 }
