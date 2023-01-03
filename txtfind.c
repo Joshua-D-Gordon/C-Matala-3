@@ -19,7 +19,6 @@ int main(){
     char *str = Search;
 
     int start;
-
     start = getword(Search);
     if(start==0){
         printf("no search term exiting program\n");
@@ -44,7 +43,7 @@ int main(){
         break;
     
     default:
-    printf("no such function");
+    printf("no such function\n");
         break;
     }
 
@@ -59,28 +58,32 @@ int getLine(char s[LINE]){
         s[i] = ch;
         i++;
     }
+    
+    if(i == 0 && ch =='\n'){
+        s[i] = ch;
+        i++;
+    }
+
     s[i] = '\0';
 
     return i;
 }
 
 int getword(char w[WORD]){
-    char ch;
+    char ch = '\0';
     int i = 0;
-    while(scanf("%c",&ch)!=EOF && ch!='\n' && ch!='\t' && ch!=' '){
+    while(ch!='\n' && ch!='\t' && ch!=' ' && scanf("%c",&ch)!=EOF){
         w[i] = ch;
         i++;
     }
-    if(ch == '\n' || ch=='\t'){
-        w[i - 1] = '\0';
-        if(i>1){
-           i--; 
-        }
-    }else{
-        w[i] = '\0';
+    if(i>0){
+        w[i-1] = '\0';
+    }
+    if(i>1){
+        i--;
     }
     
-    return i;
+    return i; 
 }
 
 int substring( char * str1, char * str2){
@@ -115,36 +118,36 @@ int similar(char *s, char *t, int n){
 }
 
 void print_lines(char * str){
-
-int end, ans;
-
-char currentline[LINE]; // for saving current line
-char *ptr = currentline; // pointer to current line
-
-end = getLine(currentline); //initilizing current line from standrad input and saving length to end
-
-while(end!=0){ //if end !=0 meaning not EOF
     
-    ans = substring(ptr,str); // answer of is our search term a substring of the line
-    
-    if(ans==1){
-        printf("%s\n",currentline); // if substring print the line
-    }
+    int end, ans;
+
+    char currentline[LINE]; // for saving current line
+    char *ptr = currentline; // pointer to current line
+
     end = getLine(currentline); //initilizing current line from standrad input and saving length to end
     
-}
+    while(end!=0){ //if end !=0 meaning not EOF
+    
+        ans = substring(ptr,str); // answer of is our search term a substring of the line
+    
+        if(ans==1){
+            printf("%s\n",currentline); // if substring print the line
+        }
+        end = getLine(currentline); //initilizing current line from standrad input and saving length to end
+        
+    }
 
 }
 
 void print_similar_words(char * str){
-
+    
     int end, ans, num = 1;
 
     char currentword[WORD]; // for saving current line
     char *ptr = currentword; // pointer to current line
 
     end = getword(currentword); //initilizing current line from standrad input and saving length to end
-   
+    
     while(end!=0){ //if end !=0 meaning not EOF
         
         ans = similar(ptr,str,num);
@@ -153,7 +156,7 @@ void print_similar_words(char * str){
             printf("%s\n",currentword);
         }
         end = getword(currentword);
-         
+        
     }
 
 }
