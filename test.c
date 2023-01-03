@@ -17,7 +17,7 @@ int main(){
     printf("%c",ch);
     scanf("%c",&ch);
     printf("%c",ch);
-
+    //
    
 
 
